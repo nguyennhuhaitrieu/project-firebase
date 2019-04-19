@@ -33,3 +33,7 @@ li.list-group-item span.author{
 	font-style: italic;
 	color: #585858;
 }
+
+.btn-info {
+	margin-left: 12px;
+}

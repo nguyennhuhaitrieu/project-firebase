@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
+import { taskCompletedRef, taskRef } from './../firebase';
 
 class TaskDoingItem extends Component {
+
+    handleCompleted = (item) => {
+        console.log(item);
+        taskRef.child(item.key).remove();
+        taskCompletedRef.push(item);
+    }
+
     render() {
+        let item = {name: '', email: ''};
+        item = (this.props.item !== undefined) ? this.props.item : item;
+
         return (
-            <ul className="list-group">
-                <li className="list-group-item">
-                    <p className="task">Login fail with email</p><span className="author"><span className="glyphicon glyphicon-user" aria-hidden="true" />&nbsp;admin@gmail.com</span>
-                    <button type="button" className="btn btn-warning btn-xs">Completed</button>
-                </li>
-                <li className="list-group-item">
-                    <p className="task">Error register</p><span className="author"><span className="glyphicon glyphicon-user" aria-hidden="true" />&nbsp;admin@gmail.com</span>
-                    <button type="button" className="btn btn-warning btn-xs">Completed</button>
-                </li>
-            </ul>
+            <li className="list-group-item">
+                <p className="task">{item.name}</p>
+                <span className="author"><span className="glyphicon glyphicon-user" aria-hidden="true" />&nbsp;{item.email}</span>
+                <button onClick={ () =>this.handleCompleted(item)}   type="button" className="btn btn-warning btn-xs">Completed</button>
+            </li>
         );
     }
 }

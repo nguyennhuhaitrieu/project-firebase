@@ -8,11 +8,11 @@ class User extends Component {
                     <h3 className="panel-title">User</h3>
                 </div>
                 <div className="panel-body">
-                    <div class="user-inner">
+                    <div className="user-inner">
                         <h4>Email: nguyennhuhaitrieu@gmail.com</h4>
                         <h4>UserID: W740UjZcnlSMgiwfBuYV4aMU9i43</h4>
                         <h4>Website: nguyennhuhaitrieu.com</h4>
-                        <button type="submit" class="btn btn-success">Logout</button>
+                        <button type="submit" className="btn btn-success">Logout</button>
                     </div>
                 </div>
             </div>
