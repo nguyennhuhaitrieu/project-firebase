@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { taskRef } from './../firebase';
+import {connect} from 'react-redux';
+import { actChangeNotify} from './../actions/index';
+import * as notify from './../constants/Notify';
 
 class FormAddTask extends Component {
     constructor(props) {
@@ -27,6 +30,8 @@ class FormAddTask extends Component {
             email: 'nguyennhuhaitrieu@gmail.com'
         })
 
+        this.props.changeNotify(notify.NOTI_TYPE_SUCCESS , notify.NOTI_ADD_TASK_TITLE, notify.NOTI_ADD_TASK_MESSGAE);
+
         this.setState({ task: ''});
         event.preventDefault();
     }
@@ -48,4 +53,12 @@ class FormAddTask extends Component {
     }
 }
 
-export default FormAddTask;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeNotify: (style, title, content) => {
+            dispatch(actChangeNotify(style, title, content));
+        }
+    }
+}
+
+export default connect(null , mapDispatchToProps)(FormAddTask);

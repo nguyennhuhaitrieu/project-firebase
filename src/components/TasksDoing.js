@@ -26,7 +26,7 @@ class TasksDoing extends Component {
 
     render() {
         let {items} = this.state;
-        console.log(items);
+        //console.log(items);
         return (
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div className="panel panel-info">

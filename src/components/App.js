@@ -9,6 +9,7 @@ import {
 import routes from './../route-config';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import Notify from './Notify'
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <Header/>
-
+          <Notify />
           <div className="row">
             <div className="col-xs-2 col-sm-2 col-md-2 col-lg-2">
               <Sidebar />
