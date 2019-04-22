@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { taskCompletedRef, taskRef } from './../firebase';
+import {connect} from 'react-redux';
+import { actChangeNotify} from './../actions/index';
+import * as notify from './../constants/Notify';
 
 class TaskDoingItem extends Component {
 
@@ -7,6 +10,7 @@ class TaskDoingItem extends Component {
         console.log(item);
         taskRef.child(item.key).remove();
         taskCompletedRef.push(item);
+        this.props.changeNotify(notify.NOTI_TYPE_SUCCESS, notify.NOTI_COMPLETED_TASK_TITLE, notify.NOTI_COMPLETED_TASK_MESSAGE);
     }
 
     render() {
@@ -23,4 +27,13 @@ class TaskDoingItem extends Component {
     }
 }
 
-export default TaskDoingItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeNotify: (style, title, content) => {
+            dispatch(actChangeNotify(style, title, content));
+        }
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(TaskDoingItem);

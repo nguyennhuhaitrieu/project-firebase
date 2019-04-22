@@ -24,7 +24,7 @@ class Notify extends Component {
 
         return (
             <AlertContainer position="top-left" >
-                <Alert headline={title} type={style} onDismiss={this.handleDismiss} timeout={2000}>
+                <Alert headline={title} type={style} onDismiss={this.handleDismiss} timeout={20000}>
                     {content}
                 </Alert>
             </AlertContainer>

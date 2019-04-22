@@ -7,13 +7,13 @@ class FormSignIn extends Component {
         <div className="form-group">
             <label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
             <div className="col-sm-6">
-            <input type="text" defaultValue name="email" className="form-control" id="inputEmail3" placeholder="Email" />
+            <input type="text" name="email" className="form-control" id="inputEmail3" placeholder="Email" />
             </div>
         </div>
         <div className="form-group">
             <label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
             <div className="col-sm-6">
-            <input type="text" defaultValue name="password" className="form-control" id="inputPassword3" placeholder="Password" />
+            <input type="text" name="password" className="form-control" id="inputPassword3" placeholder="Password" />
             </div>
         </div>
         <div className="form-group">
