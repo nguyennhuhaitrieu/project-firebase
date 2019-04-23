@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
+import FormUser from './../components/FormUser'
 
 class User extends Component {
     render() {
+        let {user} = this.props;
+        //console.log(user);
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">
                     <h3 className="panel-title">User</h3>
                 </div>
                 <div className="panel-body">
-                    <div className="user-inner">
-                        <h4>Email: nguyennhuhaitrieu@gmail.com</h4>
-                        <h4>UserID: W740UjZcnlSMgiwfBuYV4aMU9i43</h4>
-                        <h4>Website: nguyennhuhaitrieu.com</h4>
-                        <button type="submit" className="btn btn-success">Logout</button>
-                    </div>
+                    <FormUser user={ user }/>
                 </div>
             </div>
         );
     }
 }
 
-export default User;
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, null)(User);

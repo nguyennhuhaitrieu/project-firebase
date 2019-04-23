@@ -11,6 +11,7 @@ const user = (state = defaultState, action) => {
 	switch(action.type){
 
 		case types.USER_LOGIN:
+			//console.log(action);
 			state.isLogin = true;
 			state.info = action.userInfo;
 			return {...state};

@@ -33,10 +33,10 @@ class FormSignUp extends Component {
       .then(data=> {
           //data.uid
           console.log(data);
-          usersRef.child(data.uid).set({
+          usersRef.child(data.user.uid).set({
             website: website,
             isAdmin: true,
-            uid: data.uid,
+            uid: data.user.uid,
           })
           this.props.changeNotify(notify.NOTI_TYPE_SUCCESS, notify.NOTI_SIGNUP_SUCCESSFULL_TITLE, notify.NOTI_SIGNUP_SUCCESSFULL_MESSAGE)
       })
