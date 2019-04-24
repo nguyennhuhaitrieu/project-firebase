@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import FormUser from './../components/FormUser'
+import FormUser from './../components/FormUser';
+import { Redirect } from 'react-router-dom';
 
 class User extends Component {
     render() {
         let {user} = this.props;
         //console.log(user);
+        if(user.isLogin === false) {
+            return <Redirect to = '/signin' />
+        }
+
         return (
             <div className="panel panel-info">
                 <div className="panel-heading">

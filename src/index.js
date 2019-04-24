@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import appReducers from './reducers/index';
 
 import App from './components/App';
-import { firebaseApp } from './firebase';
+import { firebaseApp, usersRef } from './firebase';
 import { actLogin , actLogout } from './actions/index';
 import * as serviceWorker from './serviceWorker';
 
@@ -15,7 +15,7 @@ const store = createStore(
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-console.log(firebaseApp);
+//console.log(firebaseApp);
 
 ReactDOM.render(
 	<Provider store={store}>
@@ -24,20 +24,26 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 
-firebaseApp.auth().onAuthStateChanged(function(user) {
+firebaseApp.auth().onAuthStateChanged((user) => {
 	if (user) {
 		//console.log(user);
 		//console.log(store.getState());
 		let userInfo = {
 			email: user.email,
-			uid: user.uid
+			uid: user.uid,
+			isAdmin: false,
 		}
-		store.dispatch(actLogin(userInfo));
-
+		usersRef.child(user.uid).once('value').then(data => {
+			let info = data.val();
+			userInfo.isAdmin = info.isAdmin;
+			userInfo.website = info.website;
+			store.dispatch(actLogin(userInfo));
+		})
+		
 	} else {
 		store.dispatch(actLogout());
-		console.log('log out');
+		//console.log('log out');
 	}
 });
 
-console.log(store.getState());
+//console.log(store.getState());
