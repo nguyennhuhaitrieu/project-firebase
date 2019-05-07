@@ -17,9 +17,7 @@ const notify = (state = defaultState, action) => {
 			state.style = style;
 			state.title = title;
 			state.content = content;
-			
 			return {...state};
-
 		case types.HIDE_NOTIFY:
 			state.isShow = false;
 			return {...state};

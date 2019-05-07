@@ -57,7 +57,7 @@ class FormSignIn extends Component {
             <label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
             <div className="col-sm-6">
             <input 
-              type="text" 
+              type="password" 
               name="password" 
               className="form-control" 
               id="inputPassword3" 

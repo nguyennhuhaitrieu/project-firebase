@@ -8,7 +8,7 @@ class SignIn extends Component {
         let {user} = this.props;
         //console.log(user);
         if(user.isLogin === true) {
-            return <Redirect to = '/user' />
+            return <Redirect to = '/task' />
         }
 
         return (

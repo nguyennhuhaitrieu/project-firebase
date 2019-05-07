@@ -10,6 +10,13 @@ const routes = [
     exact: true,
     main: () => <Tasks />
   },
+
+  { 
+    path: '/task',
+    exact: true,
+    main: () => <Tasks />
+  },
+
   { 
     path: '/signin',
     exact: true,

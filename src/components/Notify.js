@@ -23,7 +23,7 @@ class Notify extends Component {
         if(isShow === false) return null;
 
         return (
-            <AlertContainer position="top-left" >
+            <AlertContainer position="top-right">
                 <Alert headline={title} type={style} onDismiss={this.handleDismiss} timeout={20000}>
                     {content}
                 </Alert>

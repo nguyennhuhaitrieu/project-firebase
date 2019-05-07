@@ -5,7 +5,20 @@ import {connect} from 'react-redux';
 import { actChangeNotify} from './../actions/index';
 import * as notify from './../constants/Notify';
 
-class TaskFinishItem extends Component {
+class TaskFinishAdminItem extends Component {
+
+    componentWillMount() {
+        taskCompletedRef.on('value', items => {
+            let data = [];
+            items.forEach(item => {
+                const {email, name } = item.val();
+                data.push({email, name, key: item.key})
+            })
+
+            //console.log(data);
+            this.setState({items: data});
+        })
+    }
 
     handleDelete(key) {
         console.log(key);
@@ -21,6 +34,8 @@ class TaskFinishItem extends Component {
             <li className="list-group-item">
                 <p className="task">{item.name}</p>
                 <span className="author"><span className="glyphicon glyphicon-user" aria-hidden="true" />&nbsp;{item.email}</span>
+
+                <button onClick={ () =>this.handleDelete(item.key)}   type="button" className="btn btn-danger btn-xs">Delete</button>
             </li>
         );
     }
@@ -35,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(TaskFinishItem);
+export default connect(null, mapDispatchToProps)(TaskFinishAdminItem);
