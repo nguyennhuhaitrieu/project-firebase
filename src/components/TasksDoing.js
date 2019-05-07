@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TaskDoingItem from './TaskDoingItem';
 import FormAddTask from './FormAddTask';
 import { taskRef } from './../firebase';
+import {connect} from 'react-redux';
+import { actChangeNotify} from './../actions/index';
 
 class TasksDoing extends Component {
     constructor(props) {
@@ -35,7 +37,7 @@ class TasksDoing extends Component {
                     {this.showElementBody(items)}
                 </div>
                 <div className="panel-footer text-right">
-                    <FormAddTask user={user}/>
+                    <FormAddTask user={user} changeNotify={this.props.changeNotify}/>
                 </div>
             </div>
         );
@@ -46,7 +48,7 @@ class TasksDoing extends Component {
         if(items.length > 0 ) {
             xhtml = items.map((item, index) => {
                 return (
-                    <TaskDoingItem key={index} item={item} index={index}/>
+                    <TaskDoingItem key={index} item={item} index={index} changeNotify={this.props.changeNotify}/>
                 )
             });
         }
@@ -55,4 +57,12 @@ class TasksDoing extends Component {
     }
 }
 
-export default TasksDoing;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeNotify: (style, title, content) => {
+            dispatch(actChangeNotify(style, title, content));
+        }
+    }
+}
+
+export default connect(null , mapDispatchToProps)(TasksDoing);

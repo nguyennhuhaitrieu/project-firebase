@@ -16,12 +16,11 @@ class TaskFinishAdminItem extends Component {
             })
 
             //console.log(data);
-            this.setState({items: data});
+            //this.setState({items: data});
         })
     }
 
     handleDelete(key) {
-        console.log(key);
         taskCompletedRef.child(key).remove();
         this.props.changeNotify(notify.NOTI_TYPE_DANGER, notify.NOTI_REMOVE_TASK_TITLE, notify.NOTI_REMOVE_TASK_MESSAGE);
     }

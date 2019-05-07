@@ -17,15 +17,13 @@ class TasksFinish extends Component {
                 const {email, name } = item.val();
                 data.push({email, name, key: item.key})
             })
-
-            //console.log(data);
-            this.setState({items: data});
+            //this.setState({items: data});
         })
     }
 
     render() {
         let {items} = this.state;
-
+        //console.log(items);
         return (
             <div className="panel panel-success">
                 <div className="panel-heading">

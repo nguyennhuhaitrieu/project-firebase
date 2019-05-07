@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { taskRef } from './../firebase';
-import {connect} from 'react-redux';
-import { actChangeNotify} from './../actions/index';
 import * as notify from './../constants/Notify';
 
 class FormAddTask extends Component {
@@ -38,6 +36,7 @@ class FormAddTask extends Component {
     }
 
     render() {
+        let {task}  = this.state
         return (
             <form className="form-inline" onSubmit = {this.handleSubmit} >
                 <div className="form-group">
@@ -46,6 +45,7 @@ class FormAddTask extends Component {
                         name="task" 
                         className="form-control" 
                         onChange={this.handChange}
+                        value = {task}
                         placeholder="Task" />
                 </div>
                 <button type="submit" className="btn btn-info">Add</button>
@@ -54,12 +54,5 @@ class FormAddTask extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeNotify: (style, title, content) => {
-            dispatch(actChangeNotify(style, title, content));
-        }
-    }
-}
 
-export default connect(null , mapDispatchToProps)(FormAddTask);
+export default FormAddTask;
